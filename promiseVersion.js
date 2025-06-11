@@ -18,7 +18,7 @@ function weedEat(name) {
             if (completed) {
                 resolve(`${name} finished using the weed eater.`);
             } else {
-                console.log(`${name} fell asleep after mowing the yard.`);
+                reject(`${name} fell asleep after mowing the yard.`);
             }
         }, 1500);
     }) ;
@@ -34,7 +34,7 @@ function trimHedges(name ) {
             if (completed) {
                 resolve(`${name} finished trimming the hedges.`);
             } else {
-                console.log(`${name} fell asleep after weed eating the yard.`);
+                reject(`${name} fell asleep after weed eating the yard.`);
             }
         }, 1000);
     });
@@ -50,7 +50,7 @@ function collectWood(name) {
             if (completed) {
                 resolve(`${name} finished collecting wood.`);
             } else {
-                console.log(`${name} fell asleep after trimming the hedges.`);
+                reject(`${name} fell asleep after trimming the hedges.`);
             }
         }, 2500);
     });
@@ -66,7 +66,7 @@ function waterGarden(name) {
             if (completed) {
                 resolve(`${name} finished watering the garden.`);
             } else {
-                console.log(`${name} fell asleep after collecting wood.`);
+                reject(`${name} fell asleep after collecting wood.`);
             }
         }, 500);
     });
@@ -86,6 +86,7 @@ function doSummerChores(name = "John") {
         .then(result => {console.log(result); return collectWood(name);})
         .then(result => {console.log(result); return waterGarden(name);})
         .then(result => {console.log(result); console.log(`${name} finished all their chores!`);})
+        .catch((error) => {console.log(error);})
         ;    
 } 
 
